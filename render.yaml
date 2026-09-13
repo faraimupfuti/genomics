@@ -1,0 +1,18 @@
+services:
+  - type: web
+    name: afrogenomics
+    runtime: static
+    buildCommand: npm run build
+    staticPublishPath: ./dist
+    autoDeploy: true
+    buildFilter:
+      paths:
+        - src/**
+        - public/**
+        - index.html
+        - package.json
+        - vite.config.ts
+        - tsconfig.json
+        - tsconfig.app.json
+        - tsconfig.node.json
+        - render.yaml
