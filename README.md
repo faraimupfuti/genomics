@@ -29,3 +29,7 @@ Use a **Static Site**:
 ## Deploy on Netlify
 
 The included `netlify.toml` and `public/_redirects` configure Vite SPA routing.
+
+
+## Why Africa visual
+The Why Africa section uses the supplied clinical-genomics image as a local asset at `public/africa-clinical-genomics.png`.
