@@ -1,8 +1,8 @@
-# AfroGenomics website
+# AfroGenomics — Clinical Genomics Computing
 
-A React + TypeScript + Vite marketing site for AfroGenomics. The visual system is intentionally **white + dark green only**—no black UI styling.
+Clinical-genomics-focused React + TypeScript + Vite website.
 
-## Local development
+## Run locally
 
 ```bash
 npm install
@@ -15,25 +15,17 @@ npm run dev
 npm run build
 ```
 
-The output is created in `dist/`.
+The production output is `dist/`.
 
-## GitHub Pages
+## Deploy on Render
 
-The repository includes a GitHub Actions workflow in `.github/workflows/deploy.yml` that builds the Vite site and deploys `dist/` to GitHub Pages.
+Use a **Static Site**:
 
-In GitHub, enable Pages under **Settings → Pages → Build and deployment → Source: GitHub Actions**.
+- Branch: `main`
+- Build command: `npm run build`
+- Publish directory: `dist`
+- Start command: leave empty
 
-## Customisation
+## Deploy on Netlify
 
-- Brand mark is an inline SVG in `src/App.tsx`.
-- All colors are controlled through CSS variables in `src/styles.css`.
-- The contact form is intentionally frontend-only until a form endpoint is chosen.
-
-### Commercial offering
-The website presents four core client packages:
-- Research Genomics
-- Clinical Genomics Support
-- Bioinformatics-as-a-Service
-- African Genomics Intelligence
-
-Clients can engage through project-based work, recurring subscriptions, or enterprise arrangements. Clinical services are positioned as computational support alongside qualified clinical/laboratory partners rather than as a standalone diagnostic claim.
+The included `netlify.toml` and `public/_redirects` configure Vite SPA routing.
