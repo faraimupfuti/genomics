@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import type { FormEvent, ReactNode } from 'react'
-import { ArrowRight, ChevronDown, Dna, GitBranch, FileText, RotateCcw, Menu, X, ShieldCheck, Database, Target, UserRound, SlidersHorizontal, CircleCheck, Activity, ScanLine, Pill, HeartPulse, Brain, Microscope, Lock, CheckCircle2 } from 'lucide-react'
+import { ArrowRight, ChevronDown, Dna, GitBranch, FileText, RotateCcw, Menu, X, ShieldCheck, Database, Target, UserRound, SlidersHorizontal, CircleCheck, Activity, ScanLine, Pill, HeartPulse, Brain, Microscope, Lock, CheckCircle2, Globe2, Zap, RefreshCw, Handshake } from 'lucide-react'
 
 const cases = [
  ['Rare & undiagnosed disease','Computational investigation of suspected genetic disease from WES/WGS data, phenotype and family information.',['WES / WGS','Phenotype matching','Variant prioritisation'],FileText],
@@ -13,8 +13,14 @@ const cases = [
  ['CNV & structural variants','Detect and characterise larger genomic alterations that can be missed by small-variant analysis.',['CNVs','SVs','Rearrangements'],Microscope],
  ['Clinical genomic reanalysis','Reanalyse historical cases as annotation databases, evidence and gene–disease knowledge evolve.',['Case reanalysis','Updated evidence','Reprioritisation'],RotateCcw],
 ]
-const faqs = [
-  ['What sequencing data can you analyse?','Workflows can be designed around WES, WGS, targeted panels and other sequencing outputs. The pipeline depends on assay type, file format, coverage and the clinical question.'],
+const advantages = [
+  [Handshake,'Built to partner, not replace','We plug into laboratories\u2019 existing sequencing workflows as the computational and interpretation layer \u2014 not another lab competing for samples.'],
+  [Globe2,'African-context analysis','Standard annotation databases are trained on largely non-African data. We build population-aware analysis into the pipeline itself, not just the pitch.'],
+  [RefreshCw,'Reanalysis is a standing service','Evidence and annotation databases move fast. We re-run historical cases against updated knowledge on an ongoing basis \u2014 most providers treat this as an afterthought.'],
+  [Zap,'Built for speed and transparency','A software-native, automated pipeline means faster turnaround and clear visibility into where a case stands \u2014 not a black box.'],
+]
+
+const faqs = ['Workflows can be designed around WES, WGS, targeted panels and other sequencing outputs. The pipeline depends on assay type, file format, coverage and the clinical question.'],
   ['Do you diagnose patients?','No. AfroGenomics provides computational analysis and interpretation-support infrastructure. Clinical diagnosis, counselling and final clinical decisions remain with appropriately qualified professionals.'],
   ['Can you work with an existing laboratory?','Yes. AfroGenomics is designed to sit alongside existing sequencing and laboratory workflows.'],
   ['Can historical cases be reanalysed?','Yes. Historical datasets can be processed against updated annotations, evidence and gene–disease knowledge.'],
@@ -88,7 +94,7 @@ function Footer(){
     <div className="container foot">
       <Brand/>
       <p>Computational genomics for clinical workflows in Africa.<br/>AfroGenomics (Pty) Ltd — registration pending, South Africa.</p>
-      <div><button onClick={()=>go('platform')}>Platform</button><button onClick={()=>go('use-cases')}>Use cases</button><button onClick={()=>go('technology')}>Technology</button><button onClick={()=>go('contact')}>Contact</button></div>
+      <div><button onClick={()=>go('platform')}>Platform</button><button onClick={()=>go('use-cases')}>Use cases</button><button onClick={()=>go('advantages')}>Why us</button><button onClick={()=>go('contact')}>Contact</button></div>
     </div>
     <div className="container copy">
       <span>© {new Date().getFullYear()} AfroGenomics <span>Clinical genomics • Computational analysis</span></span>
@@ -136,6 +142,7 @@ function MainSite(){
         <button className="active" onClick={()=>go('home')}>Home</button>
         <button onClick={()=>go('platform')}>Platform</button>
         <button onClick={()=>go('use-cases')}>Clinical Use Cases</button>
+        <button onClick={()=>go('advantages')}>Why Us</button>
         <button onClick={()=>go('workflow')}>How It Works</button>
         <button onClick={()=>go('technology')}>Technology</button>
         <button onClick={()=>go('about')}>About</button>
@@ -174,6 +181,11 @@ function MainSite(){
       <section className="cases" id="use-cases"><div className="container">
         <div className="section-head"><div><div className="eyebrow">CLINICAL USE CASES</div><h2>Computational support<br/>for <em>clinical genomics.</em></h2></div><p>Focused on the clinical questions where sequencing data needs rigorous analysis, evidence organisation and structured review.</p></div>
         <div className="case-grid">{cases.map(([t,tx,tags,I])=>{const C=I as any;return <article className="case" key={t as string}><div className="icon"><C size={20}/></div><h3>{t as string}</h3><p>{tx as string}</p><div className="tags">{(tags as string[]).map(x=><span key={x}>{x}</span>)}</div><button onClick={()=>go('contact')}>Discuss this use case <ArrowRight size={13}/></button></article>})}</div>
+      </div></section>
+
+      <section className="advantages" id="advantages"><div className="container">
+        <div className="center"><div className="eyebrow">WHY AFROGENOMICS</div><h2>Built differently<br/>from the <em>ground up.</em></h2><p>Most genetic testing providers bundle sequencing and interpretation together. AfroGenomics is the computational layer designed to sit alongside them.</p></div>
+        <div className="adv-grid">{advantages.map(([I,t,tx])=>{const C=I as any;return <div className="adv" key={t as string}><div className="icon"><C size={20}/></div><h3>{t as string}</h3><p>{tx as string}</p></div>})}</div>
       </div></section>
 
       <section className="workflow" id="workflow"><div className="container">
