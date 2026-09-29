@@ -1,6 +1,6 @@
-# AfroGenomics — Clinical Genomics Computing
+# AfroGenomics — Clinical Genomics Data Mining
 
-Clinical-genomics-focused React + TypeScript + Vite website.
+Clinical genomics data mining for cancer and rare disease — React + TypeScript + Vite website.
 
 ## Run locally
 

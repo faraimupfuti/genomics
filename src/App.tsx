@@ -1,17 +1,14 @@
 import { useEffect, useState } from 'react'
 import type { FormEvent, ReactNode } from 'react'
-import { ArrowRight, ChevronDown, Dna, GitBranch, FileText, RotateCcw, Menu, X, ShieldCheck, Database, Target, UserRound, SlidersHorizontal, CircleCheck, Activity, ScanLine, Pill, HeartPulse, Brain, Microscope, Lock, CheckCircle2, Globe2, Zap, RefreshCw, Handshake } from 'lucide-react'
+import { ArrowRight, ChevronDown, Dna, FileText, RotateCcw, Menu, X, ShieldCheck, Database, Target, UserRound, SlidersHorizontal, CircleCheck, Activity, ScanLine, Brain, Microscope, Lock, CheckCircle2, Globe2, Zap, RefreshCw, Handshake } from 'lucide-react'
 
 const cases = [
- ['Rare & undiagnosed disease','Computational investigation of suspected genetic disease from WES/WGS data, phenotype and family information.',['WES / WGS','Phenotype matching','Variant prioritisation'],FileText],
+ ['Rare & undiagnosed disease','Data mining of WES/WGS, phenotype and family information to find the genetic cause of suspected rare and undiagnosed disease.',['WES / WGS','Phenotype matching','Variant prioritisation'],FileText],
  ['Hereditary cancer','Germline analysis to identify and prioritise variants in genes associated with inherited cancer susceptibility.',['Germline analysis','Cancer genes','Evidence review'],Activity],
- ['Clinical oncology','Somatic genomic analysis to characterise tumour alterations and support molecular profiling workflows.',['Somatic variants','CNV / SV','Molecular profiling'],ScanLine],
- ['Pharmacogenomics','Analyse genomic variants associated with medication response and organise supporting pharmacogenomic evidence.',['Genotype analysis','Gene–drug evidence','Reporting'],Pill],
- ['Inherited cardiovascular disease','Support investigation of genetic causes of cardiomyopathies, arrhythmias and inherited cardiac disorders.',['Gene panels','WES / WGS','Inheritance'],HeartPulse],
- ['Neurogenetics','Analyse genomic data for neurological and developmental conditions using phenotype- and gene-driven prioritisation.',['Epilepsy','Developmental disorders','Gene prioritisation'],Brain],
- ['Mitochondrial genomics','Computational analysis of mitochondrial variation, including heteroplasmy and disease-associated variants.',['mtDNA','Heteroplasmy','Annotation'],Dna],
- ['CNV & structural variants','Detect and characterise larger genomic alterations that can be missed by small-variant analysis.',['CNVs','SVs','Rearrangements'],Microscope],
- ['Clinical genomic reanalysis','Reanalyse historical cases as annotation databases, evidence and gene–disease knowledge evolve.',['Case reanalysis','Updated evidence','Reprioritisation'],RotateCcw],
+ ['Clinical oncology','Somatic analysis of tumour (and matched normal) sequencing to characterise alterations and support molecular profiling workflows.',['Somatic variants','Tumour / normal','Molecular profiling'],ScanLine],
+ ['CNV & structural variants','Detect and characterise larger alterations in rare disease and tumour genomes that small-variant analysis can miss.',['CNVs','SVs','Rearrangements'],Microscope],
+ ['Neurogenetic & mitochondrial disease','Gene- and phenotype-driven analysis for rare neurodevelopmental and mitochondrial disorders, including mtDNA heteroplasmy.',['Developmental disorders','mtDNA','Gene prioritisation'],Brain],
+ ['Clinical genomic reanalysis','Re-mine unsolved rare disease and cancer cases as annotation databases, evidence and gene\u2013disease knowledge evolve.',['Case reanalysis','Updated evidence','Reprioritisation'],RotateCcw],
 ]
 const advantages = [
   [Handshake,'Built to partner, not replace','We plug into laboratories\u2019 existing sequencing workflows as the computational and interpretation layer \u2014 not another lab competing for samples.'],
@@ -21,17 +18,17 @@ const advantages = [
 ]
 
 const faqs = [
-  ['What sequencing data can you analyse?','Workflows can be designed around WES, WGS, targeted panels and other sequencing outputs. The pipeline depends on assay type, file format, coverage and the clinical question.'],
+  ['What sequencing data can you analyse?','Our focus is cancer and rare disease: germline WES/WGS and panels for rare disease and hereditary cancer, and tumour (with matched normal) sequencing for oncology. The pipeline depends on assay type, file format, coverage and the clinical question.'],
   ['Do you diagnose patients?','No. AfroGenomics provides computational analysis and interpretation-support infrastructure. Clinical diagnosis, counselling and final clinical decisions remain with appropriately qualified professionals.'],
   ['Can you work with an existing laboratory?','Yes. AfroGenomics is designed to sit alongside existing sequencing and laboratory workflows.'],
-  ['Can historical cases be reanalysed?','Yes. Historical datasets can be processed against updated annotations, evidence and gene–disease knowledge.'],
+  ['Can historical cases be reanalysed?','Yes. Unsolved rare disease and cancer cases can be re-mined against updated annotations, evidence and gene–disease knowledge.'],
   ['How is genomic and health data protected?','Genetic data is treated as special personal information under POPIA. It is processed only with a lawful basis and explicit consent, access-controlled, and never used for automated clinical decisions. See our Privacy Policy for details.'],
 ]
 
 function Brand(){
   return <div className="brand">
     <img src="/assets/afrogenomics-logo-icon.png" alt="AfroGenomics" className="brand-dna"/>
-    <div><strong>AfroGenomics</strong><small>CLINICAL GENOMICS COMPUTING</small></div>
+    <div><strong>AfroGenomics</strong><small>CLINICAL GENOMICS DATA MINING</small></div>
   </div>
 }
 
@@ -94,11 +91,11 @@ function Footer(){
   return <footer>
     <div className="container foot">
       <Brand/>
-      <p>Computational genomics for clinical workflows in Africa.<br/>AfroGenomics (Pty) Ltd — registration pending, South Africa.</p>
-      <div><button onClick={()=>go('platform')}>Platform</button><button onClick={()=>go('use-cases')}>Use cases</button><button onClick={()=>go('advantages')}>Why us</button><button onClick={()=>go('contact')}>Contact</button></div>
+      <p>Clinical genomics data mining for cancer and rare disease in Africa.<br/>AfroGenomics (Pty) Ltd — registration pending, South Africa.</p>
+      <div><button onClick={()=>go('platform')}>Platform</button><button onClick={()=>go('use-cases')}>Focus areas</button><button onClick={()=>go('advantages')}>Why us</button><button onClick={()=>go('contact')}>Contact</button></div>
     </div>
     <div className="container copy">
-      <span>© {new Date().getFullYear()} AfroGenomics <span>Clinical genomics • Computational analysis</span></span>
+      <span>© {new Date().getFullYear()} AfroGenomics <span>Clinical genomics data mining • Cancer &amp; rare disease</span></span>
       <span className="legal-links"><a href="/privacy">Privacy Policy</a> · <a href="/terms">Terms of Use</a></span>
     </div>
   </footer>
@@ -122,7 +119,7 @@ function ContactForm(){
     <label htmlFor="cf-name">Name<input id="cf-name" placeholder="Your name" value={fields.name} onChange={e=>set('name',e.target.value)} required/></label>
     <label htmlFor="cf-org">Organisation<input id="cf-org" placeholder="Laboratory, hospital or organisation" value={fields.org} onChange={e=>set('org',e.target.value)}/></label>
     <label htmlFor="cf-email">Work email<input id="cf-email" type="email" placeholder="you@organisation.com" value={fields.email} onChange={e=>set('email',e.target.value)} required/></label>
-    <label htmlFor="cf-msg">What are you working on?<textarea id="cf-msg" rows={4} placeholder="e.g. WES rare disease workflow…" value={fields.message} onChange={e=>set('message',e.target.value)} required/></label>
+    <label htmlFor="cf-msg">What are you working on?<textarea id="cf-msg" rows={4} placeholder="e.g. rare disease WES or tumour profiling workflow…" value={fields.message} onChange={e=>set('message',e.target.value)} required/></label>
     <label className="consent"><input type="checkbox" checked={fields.consent} onChange={e=>set('consent',e.target.checked)} required/> I consent to AfroGenomics processing this information to respond to my enquiry, per the <a href="/privacy">Privacy Policy</a>.</label>
     {status==='error' && <p className="form-error" role="alert">Please complete your name, work email, message and consent before sending.</p>}
     <button className="primary" type="submit">Discuss the workflow <ArrowRight size={16}/></button>
@@ -142,7 +139,7 @@ function MainSite(){
       <nav className={'links '+(menu?'open':'')} id="primary-nav" aria-label="Primary">
         <button className="active" onClick={()=>go('home')}>Home</button>
         <button onClick={()=>go('platform')}>Platform</button>
-        <button onClick={()=>go('use-cases')}>Clinical Use Cases</button>
+        <button onClick={()=>go('use-cases')}>Focus Areas</button>
         <button onClick={()=>go('advantages')}>Why Us</button>
         <button onClick={()=>go('workflow')}>How It Works</button>
         <button onClick={()=>go('technology')}>Technology</button>
@@ -154,13 +151,13 @@ function MainSite(){
     <main>
       <section className="hero" id="home"><div className="container hero-grid">
         <div className="hero-copy">
-          <div className="eyebrow">CLINICAL GENOMICS <span>•</span> COMPUTATIONAL ANALYSIS</div>
-          <h1>From genomic data<br/>to <em>clinical evidence.</em></h1>
-          <p>AfroGenomics provides computational analysis and interpretation support for clinical sequencing data, helping <b>laboratories and healthcare teams</b> identify, prioritise and investigate clinically relevant genomic variation.</p>
-          <div className="actions"><button className="primary" onClick={()=>go('use-cases')}>Explore Clinical Use Cases <ArrowRight size={17}/></button><button className="how" onClick={()=>go('workflow')}><span>▷</span> How It Works</button></div>
+          <div className="eyebrow">CLINICAL GENOMICS DATA MINING <span>•</span> CANCER &amp; RARE DISEASE</div>
+          <h1>Data mining for<br/><em>cancer &amp; rare disease.</em></h1>
+          <p>AfroGenomics provides clinical genomics data mining for <b>cancer and rare disease</b> — analysis and interpretation support that helps laboratories and healthcare teams identify, prioritise and investigate clinically relevant genomic variation.</p>
+          <div className="actions"><button className="primary" onClick={()=>go('use-cases')}>Explore Focus Areas <ArrowRight size={17}/></button><button className="how" onClick={()=>go('workflow')}><span>▷</span> How It Works</button></div>
           <div className="metrics">
-            <div><Dna/><b>WES / WGS</b><small>Whole Exome &<br/>Whole Genome</small></div>
-            <div><GitBranch/><b>Variant Analysis</b><small>From raw data<br/>to insights</small></div>
+            <div><Dna/><b>Rare Disease</b><small>Undiagnosed &<br/>inherited disorders</small></div>
+            <div><Activity/><b>Cancer</b><small>Hereditary &<br/>somatic tumour</small></div>
             <div><FileText/><b>Clinical Interpretation<br/>Support</b><small>Evidence-based<br/>prioritisation</small></div>
             <div><RotateCcw/><b>Genomic Reanalysis</b><small>New evidence.<br/>New answers.</small></div>
           </div>
@@ -172,7 +169,7 @@ function MainSite(){
       </div></section>
 
       <section className="challenge" id="platform"><div className="container challenge-grid">
-        <div><div className="eyebrow">THE CHALLENGE</div><h2>Sequencing generates data.<br/>Clinical genomics <em>needs answers.</em></h2><p>Modern sequencing can generate millions of genomic observations. The challenge is determining which findings matter, which require further investigation, and what evidence supports them.</p><p>AfroGenomics provides the computational workflows that sit between sequencing and clinical review.</p></div>
+        <div><div className="eyebrow">THE CHALLENGE</div><h2>Sequencing generates data.<br/>Clinical genomics <em>needs answers.</em></h2><p>A single exome or genome can hold millions of variants. In cancer and rare disease the challenge is mining out the few that matter, which need further investigation, and what evidence supports them.</p><p>AfroGenomics provides the data mining workflows that sit between sequencing and clinical review.</p></div>
         <div>
           <div className="mini-pipeline">{[['FASTQ / BAM / VCF',FileText],['QC',CircleCheck],['Alignment',SlidersHorizontal],['Variant Calling',Dna],['Annotation',FileText],['Evidence',Database],['Prioritisation',Target],['Clinical Review',UserRound]].map(([t,I])=>{const C=I as any;return <div key={t as string}><C size={19}/><b>{t as string}</b></div>})}</div>
           <picture><source srcSet="/assets/pipeline-reference.webp" type="image/webp"/><img className="pipeline-image" src="/assets/pipeline-reference.png" alt="Diagram of the clinical genomic computational workflow, from raw sequencing files to clinical review" width="1001" height="300" loading="lazy"/></picture>
@@ -180,7 +177,7 @@ function MainSite(){
       </div></section>
 
       <section className="cases" id="use-cases"><div className="container">
-        <div className="section-head"><div><div className="eyebrow">CLINICAL USE CASES</div><h2>Computational support<br/>for <em>clinical genomics.</em></h2></div><p>Focused on the clinical questions where sequencing data needs rigorous analysis, evidence organisation and structured review.</p></div>
+        <div className="section-head"><div><div className="eyebrow">FOCUS AREAS</div><h2>Built for cancer<br/>and <em>rare disease.</em></h2></div><p>Focused on the two clinical areas where sequencing data most needs rigorous analysis, evidence organisation and structured review.</p></div>
         <div className="case-grid">{cases.map(([t,tx,tags,I])=>{const C=I as any;return <article className="case" key={t as string}><div className="icon"><C size={20}/></div><h3>{t as string}</h3><p>{tx as string}</p><div className="tags">{(tags as string[]).map(x=><span key={x}>{x}</span>)}</div><button onClick={()=>go('contact')}>Discuss this use case <ArrowRight size={13}/></button></article>})}</div>
       </div></section>
 
@@ -191,11 +188,11 @@ function MainSite(){
 
       <section className="workflow" id="workflow"><div className="container">
         <div className="center"><div className="eyebrow">HOW IT WORKS</div><h2>From sequence<br/>to <em>clinical review.</em></h2><p>A transparent computational workflow designed around quality, reproducibility and traceability.</p></div>
-        <div className="steps">{[['01','Sequence','FASTQ / BAM / VCF'],['02','Analyse','QC • alignment • variant calling'],['03','Interpret','annotation • evidence • prioritisation'],['04','Review','structured findings for clinical review']].map(s=><div key={s[0]}><span>{s[0]}</span><h3>{s[1]}</h3><p>{s[2]}</p></div>)}</div>
+        <div className="workflow-figure"><picture><source srcSet="/assets/workflow-reference.webp" type="image/webp"/><img src="/assets/workflow-reference.jpg" alt="Four-step clinical genomics workflow: 01 Sequence (FASTQ, BAM, VCF), 02 Analyse (QC, alignment, variant calling), 03 Interpret (annotation, evidence, prioritisation with ClinVar and gnomAD), 04 Review (structured findings in a clinical genomic report)" width="2172" height="724" loading="lazy"/></picture></div>
       </div></section>
 
       <section className="technology" id="technology"><div className="container tech">
-        <div><div className="eyebrow">TECHNOLOGY</div><h2>Built on rigorous<br/><em>bioinformatics.</em></h2><p>Reproducible workflows can combine established genomics tooling with cloud or HPC infrastructure, selected around the assay and clinical question.</p><div className="pills">{['Nextflow','Docker / Apptainer','Python / R','VEP','ClinVar','gnomAD','FastQC / MultiQC','Cloud / HPC'].map(x=><span key={x}>{x}</span>)}</div></div>
+        <div><div className="eyebrow">TECHNOLOGY</div><h2>Built on rigorous<br/><em>bioinformatics.</em></h2><p>Reproducible rare disease and oncology workflows combine established genomics tooling with cloud or HPC infrastructure, selected around the assay and clinical question.</p><div className="pills">{['Nextflow','nf-core/raredisease','nf-core/oncoanalyser','Docker / Apptainer','Python / R','VEP','ClinVar','gnomAD','FastQC / MultiQC','Cloud / HPC'].map(x=><span key={x}>{x}</span>)}</div></div>
         <div className="terminal"><div className="termbar">● ● ● <span>afrogenomics / clinical-workflow</span></div><pre>$ workflow run clinical_wes{`\n`}Loading reference + annotation databases…{`\n`}✓ quality control complete{`\n`}✓ variant analysis complete{`\n`}✓ evidence aggregation complete{`\n`}→ 24 candidate variants prioritised{`\n`}<b>clinical_review / ready</b></pre></div>
       </div></section>
 
@@ -212,7 +209,7 @@ function MainSite(){
       </div></section>
 
       <section className="contact" id="contact"><div className="container contact-grid">
-        <div><div className="eyebrow">START A CONVERSATION</div><h2>Have a clinical genomics workflow?<br/><em>Let's build the computational layer.</em></h2><p>Tell us what you sequence, the clinical question you are solving and where your workflow needs computational support.</p></div>
+        <div><div className="eyebrow">START A CONVERSATION</div><h2>Have a cancer or rare disease workflow?<br/><em>Let's mine the data together.</em></h2><p>Tell us what you sequence, the clinical question you are solving and where your workflow needs data mining and analysis support.</p></div>
         <ContactForm/>
       </div></section>
     </main>
